@@ -9,8 +9,12 @@ async function bootstrap() {
       whitelist: true, // remove unwanted properties
       forbidNonWhitelisted: true, // throw an error if unwanted properties are present
       transform: true, // transform the incoming data to the correct type
+      transformOptions: {
+        enableImplicitConversion: true, // convert string to number, etc.
+      },
     }),
   );
+  app.setGlobalPrefix('ilovecoffee');
   await app.listen(3000);
 }
 bootstrap();
