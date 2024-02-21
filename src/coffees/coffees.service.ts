@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import { Coffee, Flavor } from './entities';
+import { DataSource, Repository } from 'typeorm';
+import { Coffee, Flavor, Event } from './entities';
 import { CreateCoffeeDto } from './dto';
 import { PaginationQueryDto } from 'src/common';
 
@@ -12,6 +12,7 @@ export class CoffeesService {
     private readonly coffeeRepository: Repository<Coffee>,
     @InjectRepository(Flavor)
     private readonly flavorRepository: Repository<Flavor>,
+    private readonly dataSource: DataSource,
   ) {}
 
   findAll(paginationQuery: PaginationQueryDto) {
@@ -86,5 +87,29 @@ export class CoffeesService {
     }
 
     return this.flavorRepository.create({ name: flavorName });
+  }
+
+  async recommendCoffee(coffee: Coffee) {
+    const queryRunner = this.dataSource.createQueryRunner();
+
+    await queryRunner.connect();
+    await queryRunner.startTransaction();
+
+    try {
+      coffee.recommendations += 1;
+      const recommendedEvent = new Event();
+      recommendedEvent.name = 'recommend_coffee';
+      recommendedEvent.type = 'coffee';
+      recommendedEvent.payload = { coffeeId: coffee.id };
+
+      await queryRunner.manager.save(coffee);
+      await queryRunner.manager.save(recommendedEvent);
+
+      await queryRunner.commitTransaction();
+    } catch (err) {
+      await queryRunner.rollbackTransaction();
+    } finally {
+      await queryRunner.release();
+    }
   }
 }
