@@ -68,3 +68,27 @@ npm i @nestjs/mapped-types
 ```bash
 npm install @nestjs/typeorm typeorm pg
 ```
+
+### Create the migration
+
+```bash
+npx typeorm migration:create src/migrations/CoffeeRefactor
+```
+
+### Run the migration
+
+```bash
+npx typeorm migration:run -d dist/typeorm-cli.config
+```
+
+### Revert the migration
+
+```bash
+npx typeorm migration:revert -d dist/typeorm-cli.config
+```
+
+### Generate the migration
+
+```bash
+npx typeorm migration:create src/migrations/SchemaSync -d dist/typeorm-cli.config
+```
