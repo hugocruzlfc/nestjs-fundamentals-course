@@ -1,4 +1,4 @@
-import { SchemaSync1708625872432 } from 'src/migrations/1708625872432-SchemaSync';
+import { SchemaSync1708775558842 } from 'src/migrations/1708775558842-SchemaSync';
 import { Coffee, Flavor } from './src/coffees/entities';
 import { DataSource } from 'typeorm';
 
@@ -10,5 +10,5 @@ export default new DataSource({
   password: 'postgres',
   database: 'ilovecoffee',
   entities: [Coffee, Flavor],
-  migrations: [SchemaSync1708625872432],
+  migrations: [SchemaSync1708775558842],
 });

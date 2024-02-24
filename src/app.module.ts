@@ -5,7 +5,7 @@ import { TypeOrmConfig } from './libs';
 import { CoffeeRatingModule } from './coffee-rating/coffee-rating.module';
 import { DatabaseModule } from './database/database.module';
 import { ConfigModule } from '@nestjs/config';
-import * as Joi from '@hapi/joi';
+import Joi from 'joi';
 import appConfig from './config/app.config';
 
 @Module({
@@ -28,8 +28,4 @@ import appConfig from './config/app.config';
   controllers: [],
   providers: [],
 })
-export class AppModule {
-  // constructor() {
-  //   console.log(TypeOrmConfig);
-  // }
-}
+export class AppModule {}
