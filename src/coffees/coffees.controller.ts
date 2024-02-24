@@ -15,7 +15,7 @@ import {
 } from '@nestjs/common';
 import { CoffeesService } from './coffees.service';
 import { CreateCoffeeDto, UpdateCoffeeDto } from './dto';
-import { PaginationQueryDto, Public } from 'src/common';
+import { PaginationQueryDto, ParseIntPipe, Public } from 'src/common';
 
 // @UsePipes(ValidationPipe)  all the pipes in the controller
 @Controller('coffees')
@@ -32,7 +32,8 @@ export class CoffeesController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
+  findOne(@Param('id', ParseIntPipe) id: string) {
+    console.log(id);
     return this.coffeeService.findOne(id);
   }
 

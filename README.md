@@ -104,3 +104,15 @@ nest g filter common/filters/http-exception
 ```bash
 nest g guard common/guards/api-key
 ```
+
+### Generate interceptor
+
+```bash
+nest g interceptor common/interceptors/transform
+```
+
+### Generate pipe
+
+```bash
+nest g pipe common/pipes/parse-int
+```
