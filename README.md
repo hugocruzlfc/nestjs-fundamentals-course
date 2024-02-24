@@ -122,3 +122,13 @@ nest g pipe common/pipes/parse-int
 ```bash
 nest g middleware common/middlewares/logging
 ```
+
+### Adding Swagger
+
+```bash
+npm install @nestjs/swagger swagger-ui-express
+```
+
+add in nest-cli.json "compilerOptions": {
+"plugins": ["@nestjs/swagger/plugin"]
+}

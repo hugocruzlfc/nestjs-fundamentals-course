@@ -16,14 +16,19 @@ import {
 import { CoffeesService } from './coffees.service';
 import { CreateCoffeeDto, UpdateCoffeeDto } from './dto';
 import { PaginationQueryDto, ParseIntPipe, Protocol, Public } from 'src/common';
+import { ApiResponse, ApiTags } from '@nestjs/swagger';
 
 // @UsePipes(ValidationPipe)  all the pipes in the controller
+
+@ApiTags('coffees')
+@ApiResponse({ status: 403, description: 'Forbidden.' })
 @Controller('coffees')
 export class CoffeesController {
   constructor(private readonly coffeeService: CoffeesService) {}
 
   // @UsePipes(ValidationPipe) only for the specific method
   // @SetMetadata('isPublic', true)
+
   @Public() // custom decorator
   @Get()
   async findAll(
