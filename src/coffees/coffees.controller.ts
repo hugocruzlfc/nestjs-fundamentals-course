@@ -15,7 +15,7 @@ import {
 } from '@nestjs/common';
 import { CoffeesService } from './coffees.service';
 import { CreateCoffeeDto, UpdateCoffeeDto } from './dto';
-import { PaginationQueryDto, ParseIntPipe, Public } from 'src/common';
+import { PaginationQueryDto, ParseIntPipe, Protocol, Public } from 'src/common';
 
 // @UsePipes(ValidationPipe)  all the pipes in the controller
 @Controller('coffees')
@@ -26,8 +26,12 @@ export class CoffeesController {
   // @SetMetadata('isPublic', true)
   @Public() // custom decorator
   @Get()
-  async findAll(@Query() paginationQuery: PaginationQueryDto) {
-    //await new Promise((resolve) => setTimeout(resolve, 5000));
+  async findAll(
+    @Protocol('https') protocol: string,
+    @Query() paginationQuery: PaginationQueryDto,
+  ) {
+    //await new Promise((resolve) => setTimeout(resolve, 5000));ç
+    console.log(protocol);
     return this.coffeeService.findAll(paginationQuery);
   }
 

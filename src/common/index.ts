@@ -1,4 +1,5 @@
 export * from './common.module';
+export * from './decorators/protocol.decorators';
 export * from './decorators/public.decorators';
 export * from './dto';
 export * from './filters/http-exception/http-exception.filter';
