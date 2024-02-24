@@ -4,6 +4,7 @@ import { ValidationPipe } from '@nestjs/common';
 import {
   ApiKeyGuard,
   HttpExceptionFilter,
+  TimeoutInterceptor,
   WrapResponseInterceptor,
 } from './common';
 
@@ -21,7 +22,10 @@ async function bootstrap() {
   );
   app.useGlobalFilters(new HttpExceptionFilter());
   // app.useGlobalGuards(new ApiKeyGuard());
-  app.useGlobalInterceptors(new WrapResponseInterceptor());
+  app.useGlobalInterceptors(
+    new WrapResponseInterceptor(),
+    new TimeoutInterceptor(),
+  );
   app.setGlobalPrefix('ilovecoffee');
   await app.listen(3000);
 }
