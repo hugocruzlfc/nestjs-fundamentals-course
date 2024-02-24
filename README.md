@@ -92,3 +92,9 @@ npx typeorm migration:revert -d dist/typeorm-cli.config
 ```bash
 npx typeorm migration:create src/migrations/SchemaSync -d dist/typeorm-cli.config
 ```
+
+### Generate filter
+
+```bash
+nest g filter common/filters/http-exception
+```
