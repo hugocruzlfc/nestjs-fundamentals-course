@@ -1,7 +1,11 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
-import { ApiKeyGuard, HttpExceptionFilter } from './common';
+import {
+  ApiKeyGuard,
+  HttpExceptionFilter,
+  WrapResponseInterceptor,
+} from './common';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -17,6 +21,7 @@ async function bootstrap() {
   );
   app.useGlobalFilters(new HttpExceptionFilter());
   // app.useGlobalGuards(new ApiKeyGuard());
+  app.useGlobalInterceptors(new WrapResponseInterceptor());
   app.setGlobalPrefix('ilovecoffee');
   await app.listen(3000);
 }
