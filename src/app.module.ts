@@ -9,6 +9,7 @@ import Joi from 'joi';
 import appConfig from './config/app.config';
 import { APP_PIPE } from '@nestjs/core';
 import { CommonModule } from './common';
+import { DataSourceOptions } from 'typeorm';
 
 @Module({
   imports: [

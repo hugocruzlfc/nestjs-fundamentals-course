@@ -116,3 +116,9 @@ nest g interceptor common/interceptors/transform
 ```bash
 nest g pipe common/pipes/parse-int
 ```
+
+### Generate middleware
+
+```bash
+nest g middleware common/middlewares/logging
+```
