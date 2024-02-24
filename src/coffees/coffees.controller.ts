@@ -9,12 +9,13 @@ import {
   Patch,
   Post,
   Query,
+  SetMetadata,
   UsePipes,
   ValidationPipe,
 } from '@nestjs/common';
 import { CoffeesService } from './coffees.service';
 import { CreateCoffeeDto, UpdateCoffeeDto } from './dto';
-import { PaginationQueryDto } from 'src/common';
+import { PaginationQueryDto, Public } from 'src/common';
 
 // @UsePipes(ValidationPipe)  all the pipes in the controller
 @Controller('coffees')
@@ -22,6 +23,8 @@ export class CoffeesController {
   constructor(private readonly coffeeService: CoffeesService) {}
 
   // @UsePipes(ValidationPipe) only for the specific method
+  // @SetMetadata('isPublic', true)
+  @Public() // custom decorator
   @Get()
   findAll(@Query() paginationQuery: PaginationQueryDto) {
     return this.coffeeService.findAll(paginationQuery);

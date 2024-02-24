@@ -98,3 +98,9 @@ npx typeorm migration:create src/migrations/SchemaSync -d dist/typeorm-cli.confi
 ```bash
 nest g filter common/filters/http-exception
 ```
+
+### Generate guard
+
+```bash
+nest g guard common/guards/api-key
+```
