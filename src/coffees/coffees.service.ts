@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { DataSource, Repository } from 'typeorm';
 import { Coffee, Flavor, Event } from './entities';
 import { CreateCoffeeDto } from './dto';
-import { PaginationQueryDto } from 'src/common';
+import { PaginationQueryDto } from '../common';
 import { ConfigService, ConfigType } from '@nestjs/config';
 import coffeesConfig from './config/coffees.config';
 

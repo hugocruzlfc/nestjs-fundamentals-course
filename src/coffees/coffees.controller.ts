@@ -15,7 +15,7 @@ import {
 } from '@nestjs/common';
 import { CoffeesService } from './coffees.service';
 import { CreateCoffeeDto, UpdateCoffeeDto } from './dto';
-import { PaginationQueryDto, ParseIntPipe, Protocol, Public } from 'src/common';
+import { PaginationQueryDto, ParseIntPipe, Protocol, Public } from '../common';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
 
 // @UsePipes(ValidationPipe)  all the pipes in the controller

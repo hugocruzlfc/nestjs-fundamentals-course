@@ -1,4 +1,4 @@
-import { SchemaSync1708775558842 } from 'src/migrations/1708775558842-SchemaSync';
+import { SchemaSync1708775558842 } from './src/migrations/1708775558842-SchemaSync';
 import { Coffee, Flavor } from './src/coffees/entities';
 import { DataSource } from 'typeorm';
 
