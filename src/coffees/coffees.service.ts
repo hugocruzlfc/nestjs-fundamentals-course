@@ -16,15 +16,14 @@ export class CoffeesService {
     private readonly flavorRepository: Repository<Flavor>,
     private readonly dataSource: DataSource,
     // private readonly configService: ConfigService,
-    @Inject(coffeesConfig.KEY)
-    private readonly coffeesConfiguration: ConfigType<typeof coffeesConfig>,
+    // @Inject(coffeesConfig.KEY)
+    // private readonly coffeesConfiguration: ConfigType<typeof coffeesConfig>,
   ) {
     // const databaseHost = this.configService.get<string>('DATABASE_HOST');
     // console.log(databaseHost);
     // const coffeesConfig = this.configService.get('coffees');
     // console.log(coffeesConfig);
-
-    console.log(coffeesConfiguration.foo);
+    // console.log(coffeesConfiguration.foo);
   }
 
   findAll(paginationQuery: PaginationQueryDto) {
